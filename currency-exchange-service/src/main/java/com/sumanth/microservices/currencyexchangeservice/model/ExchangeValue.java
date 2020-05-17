@@ -1,4 +1,4 @@
-package com.sumanth.microservices.currencyexchangeservice.bean;
+package com.sumanth.microservices.currencyexchangeservice.model;
 
 import java.math.BigDecimal;
 
@@ -18,7 +18,6 @@ public class ExchangeValue {
 	private String to;
 	
 	private BigDecimal conversionMultiple;
-	private int port;
 	
 	public ExchangeValue() {
 		
@@ -42,14 +41,6 @@ public class ExchangeValue {
 
 	public BigDecimal getConversionMultiple() {
 		return conversionMultiple;
-	}
-
-	public int getPort() {
-		return port;
-	}
-
-	public void setPort(int port) {
-		this.port = port;
 	}
 
 	public Long getId() {
