@@ -18,8 +18,8 @@ public class CurrencyExchangeController {
 
 	@GetMapping("/currency-exchange/from/{from}/to/{to}")
 	public ExchangeValueDTO retrieveExchangeValue(@PathVariable String from, @PathVariable String to) {
-		ExchangeValueDTO exchangeValue = service.findCurrencyExchangeByFromAndTo(from, to);
-		logger.info("{}",exchangeValue);
-		return exchangeValue;
+		ExchangeValueDTO exchangeValueDTO = service.findCurrencyExchangeByFromAndTo(from, to);
+		logger.info("{}",exchangeValueDTO);
+		return exchangeValueDTO;
 	}
 }

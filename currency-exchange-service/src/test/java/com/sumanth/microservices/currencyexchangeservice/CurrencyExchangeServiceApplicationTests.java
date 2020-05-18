@@ -7,7 +7,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 class CurrencyExchangeServiceApplicationTests {
 
 	@Test
-	void contextLoads() {
+	void testMain() {
+		CurrencyExchangeServiceApplication.main(new String[] {});
 	}
 
 }
