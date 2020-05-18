@@ -1,5 +1,15 @@
 # Springboot Junit5 Mockito
-A small currency exchange service to demonstrate writing test cases and 100% code coverage using Junit5 and Mockito
+This repo is intended to demonstrate how one can use Junit5 & Mockito in a springboot project for writing unit test cases and achieving 100% code coverage. 
+
+Note: Code quality is a different metric and is not automatically improved by writing unit testcases or having 100% code coverage.
+
+## Main Features
+
+* Standard Project Structure - model, repository, service, dto, controller...
+* Mockito - Mock framework using annotations @Mock, @InjectMocks
+* Junit5 - Unit testing framework for Java
+* Lombok - Reduce boilerplate code for model/data objects
+* Code Coverage - 100% achieved with all test cases. Verified with Coverage plugin of IntelliJ
 
 ### Prerequisites
 
@@ -13,14 +23,6 @@ What things you need to install before starting
 ## Getting Started
 
 These instructions will help you to get your project up and running on your local machine for development and testing purposes. The application is build on top of Spring Boot (https://spring.io/projects/spring-boot) providing a runtime container. 
-
-## Main Features
-
-* Standard Project Structure - model, repository, service, dto, controller...
-* Mockito - Mock framework using annotations @Mock, @InjectMocks
-* Junit5 - Unit testing framework for Java
-* Lombok - Reduce boilerplate code for model/data objects
-* Code Coverage - 100% achieved with all test cases. Verified with Coverage plugin of IntelliJ
 
 ## Learning Resources
 
