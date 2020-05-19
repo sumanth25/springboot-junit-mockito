@@ -15,6 +15,7 @@ import java.math.BigDecimal;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -45,8 +46,8 @@ public class ExchangeValueServiceImplTest {
         exchangeValueDummy.setConversionMultiple(BigDecimal.valueOf(65));
         String serverPort="9090";
 
-        when(repositoryMock.findByFromAndTo(anyString(), anyString())).thenReturn(exchangeValueDummy);
-        when(environmentMock.getProperty("local.server.port")).thenReturn(serverPort);
+        given(repositoryMock.findByFromAndTo(anyString(), anyString())).willReturn(exchangeValueDummy);
+        given(environmentMock.getProperty("local.server.port")).willReturn(serverPort);
 
         //When
         ExchangeValueDTO actualExchangeValueDTO = exchangeValueServiceImplMock.findCurrencyExchangeByFromAndTo(anyString(), anyString());
@@ -61,7 +62,7 @@ public class ExchangeValueServiceImplTest {
     @Test
     void testFindCurrencyExchangeByFromAndTo_Null() {
         //Given
-        when(repositoryMock.findByFromAndTo(anyString(), anyString())).thenReturn(null);
+        given(repositoryMock.findByFromAndTo(anyString(), anyString())).willReturn(null);
 
         //When
         ExchangeValueDTO actualExchangeValueDTO = exchangeValueServiceImplMock.findCurrencyExchangeByFromAndTo(anyString(), anyString());
