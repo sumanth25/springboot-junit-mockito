@@ -9,9 +9,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigDecimal;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.when;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.verify;
 
 @SpringBootTest
 public class CurrencyExchangeControllerTest {
@@ -23,20 +25,36 @@ public class CurrencyExchangeControllerTest {
 
     @Test
     void testRetrieveExchangeValue_dummyData() {
+        //Given
         ExchangeValueDTO exchangeValueDTODummy=new ExchangeValueDTO();
         exchangeValueDTODummy.setId(1L);
         exchangeValueDTODummy.setTo("INR");
         exchangeValueDTODummy.setFrom("USD");
         exchangeValueDTODummy.setConversionMultiple(BigDecimal.valueOf(65));
         exchangeValueDTODummy.setPort(9090);
-        when(currencyExchangeControllerMock.retrieveExchangeValue(anyString(), anyString())).thenReturn(exchangeValueDTODummy);
-        assertEquals(exchangeValueDTODummy,currencyExchangeControllerMock.retrieveExchangeValue(anyString(),anyString()));
+        given(currencyExchangeControllerMock.retrieveExchangeValue(anyString(), anyString())).willReturn(exchangeValueDTODummy);
+
+        //When
+        ExchangeValueDTO actualExchangeValueDTO = currencyExchangeControllerMock.retrieveExchangeValue(anyString(), anyString());
+
+        //Then
+        assertThat(actualExchangeValueDTO,is(exchangeValueDTODummy));
+
+        verify(exchangeValueServiceMock).findCurrencyExchangeByFromAndTo(anyString(), anyString());
     }
 
     @Test
     void testRetrieveExchangeValue_noData() {
+        //Given
         ExchangeValueDTO exchangeValueDTODummy=new ExchangeValueDTO();
-        when(currencyExchangeControllerMock.retrieveExchangeValue(anyString(), anyString())).thenReturn(exchangeValueDTODummy);
-        assertEquals(exchangeValueDTODummy,currencyExchangeControllerMock.retrieveExchangeValue(anyString(),anyString()));
+        given(currencyExchangeControllerMock.retrieveExchangeValue(anyString(), anyString())).willReturn(exchangeValueDTODummy);
+
+        //When
+        ExchangeValueDTO actualExchangeValueDTO = currencyExchangeControllerMock.retrieveExchangeValue(anyString(), anyString());
+
+        //Then
+        assertThat(actualExchangeValueDTO,is(exchangeValueDTODummy));
+
+        verify(exchangeValueServiceMock).findCurrencyExchangeByFromAndTo(anyString(), anyString());
     }
 }

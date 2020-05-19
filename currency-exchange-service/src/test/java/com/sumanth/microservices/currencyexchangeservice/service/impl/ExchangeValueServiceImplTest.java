@@ -3,6 +3,7 @@ package com.sumanth.microservices.currencyexchangeservice.service.impl;
 import com.sumanth.microservices.currencyexchangeservice.dto.ExchangeValueDTO;
 import com.sumanth.microservices.currencyexchangeservice.model.ExchangeValue;
 import com.sumanth.microservices.currencyexchangeservice.repository.ExchangeValueRepository;
+import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -11,7 +12,8 @@ import org.springframework.core.env.Environment;
 
 import java.math.BigDecimal;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -29,6 +31,7 @@ public class ExchangeValueServiceImplTest {
 
     @Test
     void testFindCurrencyExchangeByFromAndTo_NotNull() {
+        //Given
         ExchangeValueDTO exchangeValueDTODummy=new ExchangeValueDTO();
         exchangeValueDTODummy.setId(1L);
         exchangeValueDTODummy.setFrom("USD");
@@ -44,7 +47,12 @@ public class ExchangeValueServiceImplTest {
 
         when(repositoryMock.findByFromAndTo(anyString(), anyString())).thenReturn(exchangeValueDummy);
         when(environmentMock.getProperty("local.server.port")).thenReturn(serverPort);
-        assertEquals(exchangeValueDTODummy,exchangeValueServiceImplMock.findCurrencyExchangeByFromAndTo(anyString(),anyString()));
+
+        //When
+        ExchangeValueDTO actualExchangeValueDTO = exchangeValueServiceImplMock.findCurrencyExchangeByFromAndTo(anyString(), anyString());
+
+        //Then
+        assertThat(actualExchangeValueDTO,is(exchangeValueDTODummy));
 
         verify(repositoryMock).findByFromAndTo(anyString(), anyString());
         verify(environmentMock).getProperty(("local.server.port"));
@@ -52,8 +60,14 @@ public class ExchangeValueServiceImplTest {
 
     @Test
     void testFindCurrencyExchangeByFromAndTo_Null() {
+        //Given
         when(repositoryMock.findByFromAndTo(anyString(), anyString())).thenReturn(null);
-        assertEquals(null,exchangeValueServiceImplMock.findCurrencyExchangeByFromAndTo(anyString(),anyString()));
+
+        //When
+        ExchangeValueDTO actualExchangeValueDTO = exchangeValueServiceImplMock.findCurrencyExchangeByFromAndTo(anyString(), anyString());
+
+        //Then
+        assertThat(actualExchangeValueDTO, Matchers.nullValue());
 
         verify(repositoryMock).findByFromAndTo(anyString(), anyString());
     }
