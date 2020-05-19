@@ -10,6 +10,7 @@ Note: Code quality is a different metric and is not automatically improved by wr
 * Junit5 - Unit testing framework for Java
 * Lombok - Reduce boilerplate code for model/data objects
 * Code Coverage - 100% achieved with all test cases. Verified with Coverage plugin of IntelliJ
+* BDD - Behavior-driven development encourages writing tests in a natural, human-readable language that focuses on the behavior of the application
 
 ### Prerequisites
 
@@ -32,6 +33,7 @@ These instructions will help you to get your project up and running on your loca
 * Mocking Final and Static Methods - (https://www.youtube.com/watch?v=0gCNMml0or0)
 * Mock with Junit and Spring - (https://www.youtube.com/watch?v=eqRF4xHoGck)
 * Spy vs Mock - (https://www.youtube.com/watch?v=FLwGdJIRNmc)
+* BDD with Mockito - (https://www.youtube.com/watch?v=ukAmNbW790s)
 
 ## How to use git ##
 
