@@ -32,7 +32,8 @@ public class CurrencyExchangeControllerTest {
         exchangeValueDTODummy.setFrom("USD");
         exchangeValueDTODummy.setConversionMultiple(BigDecimal.valueOf(65));
         exchangeValueDTODummy.setPort(9090);
-        given(currencyExchangeControllerMock.retrieveExchangeValue(anyString(), anyString())).willReturn(exchangeValueDTODummy);
+
+        given(exchangeValueServiceMock.findCurrencyExchangeByFromAndTo(anyString(), anyString())).willReturn(exchangeValueDTODummy);
 
         //When
         ExchangeValueDTO actualExchangeValueDTO = currencyExchangeControllerMock.retrieveExchangeValue(anyString(), anyString());
@@ -47,7 +48,7 @@ public class CurrencyExchangeControllerTest {
     void testRetrieveExchangeValue_noData() {
         //Given
         ExchangeValueDTO exchangeValueDTODummy=new ExchangeValueDTO();
-        given(currencyExchangeControllerMock.retrieveExchangeValue(anyString(), anyString())).willReturn(exchangeValueDTODummy);
+        given(exchangeValueServiceMock.findCurrencyExchangeByFromAndTo(anyString(), anyString())).willReturn(exchangeValueDTODummy);
 
         //When
         ExchangeValueDTO actualExchangeValueDTO = currencyExchangeControllerMock.retrieveExchangeValue(anyString(), anyString());
@@ -57,4 +58,5 @@ public class CurrencyExchangeControllerTest {
 
         verify(exchangeValueServiceMock).findCurrencyExchangeByFromAndTo(anyString(), anyString());
     }
+
 }
