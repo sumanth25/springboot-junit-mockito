@@ -1,16 +1,18 @@
 # Springboot Junit5 Mockito
-This repo is intended to demonstrate how one can use Junit5 & Mockito in a springboot project for writing unit test cases and achieving 100% code coverage. 
+This repo is intended to demonstrate how one can use Junit5 & Mockito in a springboot project to perform Unit Testing, Integration Testing and achieving 100% code coverage. 
 
 Note: Code quality is a different metric and is not automatically improved by writing unit testcases or having 100% code coverage.
 
 ## Main Features
 
 * Standard Project Structure - model, repository, service, dto, controller...
-* Mockito - Mock framework using annotations @Mock, @InjectMocks
+* Mockito - Mock framework using annotations @Mock, @InjectMocks, @Mockmvc...
 * Junit5 - Unit testing framework for Java
 * Lombok - Reduce boilerplate code for model/data objects
 * Code Coverage - 100% achieved with all test cases. Verified with Coverage plugin of IntelliJ
 * BDD - Behavior-driven development encourages writing tests in a natural, human-readable language that focuses on the behavior of the application
+* Unit Test Cases - located under test package to test each methods in the class using mocked data
+* Integration Test Case -located under test package to test all layers with actual data from db
 
 ### Prerequisites
 
@@ -77,4 +79,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Acknowledgments
 
-* Thank You In28Minutes! - (https://github.com/in28minutes/MockitoTutorialForBeginners)
+Thank You!
+* In28Minutes - (https://github.com/in28minutes/MockitoTutorialForBeginners)
+* Baeldung - (https://www.baeldung.com/spring-boot-testing)
+* DZone - (https://dzone.com/articles/spring-boot-2-with-junit-5-and-mockito-2-for-unit)
