@@ -4,10 +4,12 @@ import com.sumanth.microservices.currencyexchangeservice.dto.ExchangeValueDTO;
 import com.sumanth.microservices.currencyexchangeservice.model.ExchangeValue;
 import com.sumanth.microservices.currencyexchangeservice.repository.ExchangeValueRepository;
 import org.hamcrest.Matchers;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.core.env.Environment;
 
 import java.math.BigDecimal;
@@ -17,9 +19,9 @@ import static org.hamcrest.Matchers.is;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
-@SpringBootTest
+@ExtendWith(MockitoExtension.class)
+@DisplayName("Spring boot Mockito Junit5 ExchangeValueServiceImplTest example")
 public class ExchangeValueServiceImplTest {
     @Mock
     private ExchangeValueRepository repositoryMock;
