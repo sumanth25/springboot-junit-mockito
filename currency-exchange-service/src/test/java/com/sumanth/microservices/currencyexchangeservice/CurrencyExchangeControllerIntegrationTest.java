@@ -1,4 +1,4 @@
-package com.sumanth.microservices.currencyexchangeservice.controller;
+package com.sumanth.microservices.currencyexchangeservice;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
